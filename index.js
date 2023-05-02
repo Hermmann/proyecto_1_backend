@@ -5,7 +5,7 @@ const dotenv = require("dotenv")
 dotenv.config();
 
 const routerUser = require("./src/routes/user_route")
-// const routerRestaurant = require("./src/routes/restaurant_route")
+const routerRestaurant = require("./src/routes/restaurant_route")
 mongoose.set('strictQuery', true);
 
 
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(routerUser)
-// app.use(routerRestaurant)
+app.use(routerRestaurant)
 
 
 
@@ -51,4 +51,4 @@ app.use((req, res) => {
   });
   
   // Inicia app en puerto 8080
-  app.listen(9500, console.log('listen'));
+  app.listen(8080, console.log('listen'));

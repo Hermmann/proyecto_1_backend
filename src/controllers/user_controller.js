@@ -39,7 +39,7 @@ const getUser = async (req, res) => {
       return res.status(200).json(user);
     }
 
-    /*if((email!==undefined) && (contraseña!==undefined)){
+    if((email!==undefined) && (contraseña!==undefined)){
             let user = (await User.findOne({email})) || null;
             if(!user){
                 return res.status(200).json({msg:"Usuario no existe"})
@@ -51,7 +51,7 @@ const getUser = async (req, res) => {
             }
 
             
-        }*/
+        }
     res
       .status(200)
       .json({ msg: "No envió ningún parametro de busqueda válido" });
