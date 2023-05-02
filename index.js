@@ -3,12 +3,27 @@ const cors = require('cors');
 const mongoose = require ('mongoose');
 const dotenv = require("dotenv")
 dotenv.config();
+
+const routerUser = require("./src/routes/user_route")
+// const routerRestaurant = require("./src/routes/restaurant_route")
 mongoose.set('strictQuery', true);
 
 
 
 // Creacion del app
 const app = express()
+app.get("/api", (req, res) => {
+  res.send("API USER")
+});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(routerUser)
+// app.use(routerRestaurant)
+
+
+
+
 // Conexión a MongoDB usando mongoose
 mongoose
   .connect(
@@ -24,7 +39,7 @@ mongoose
   });
 
 // Middlewares
-app.use(cors());
+app.use(cors()); 
 app.use(express.json());
 
 // import empanadaRoutes from './empanada/empanada.routes'
