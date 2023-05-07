@@ -6,6 +6,7 @@ dotenv.config();
 
 const routerUser = require("./src/routes/user_route")
 const routerRestaurant = require("./src/routes/restaurant_route")
+const routerProduct = require("./src/routes/product_route")
 mongoose.set('strictQuery', true);
 
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(routerUser)
 app.use(routerRestaurant)
+app.use(routerProduct)
 
 
 

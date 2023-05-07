@@ -23,11 +23,11 @@ const createRestaurant=async(req,res)=>{
 
 const getRestaurant = async (req, res) => {
     try {
-        const {_id} = req.body;
+        //const {_id} = req.body;
         const {id_restaurant} = req.query;
 
         if(id_restaurant !== undefined){
-            let restaurant = (await Restaurant.findById(id_restaurant));
+            let restaurant  = await Restaurant.findById(id_restaurant);
             if(restaurant==null){
                 return res.status(404).json({msg: "No existe el restaurante"});
         }
@@ -59,7 +59,7 @@ const getCategoria = async (req, res) => {
         .json({msg: "No envio ningún parametro de busqueda válido"});
     
     } catch (error) {
-        
+        res.status(500).json({ msg: "Error en el servidor" });
     }
 
     
