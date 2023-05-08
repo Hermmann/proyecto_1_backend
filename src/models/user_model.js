@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     contraseña:{ type: String, require: true},
     direccion: { type: String, require: true },
     rol: { type: String, require: true },
-    //pedidos: [{type: mongoose.Schema.ObjectId, ref: "pedido",},],
+    pedidos: [{type: mongoose.Schema.ObjectId, ref: "pedido",},],
   },
   {
     versionKey: false,
