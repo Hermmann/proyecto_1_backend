@@ -54,19 +54,43 @@ const createPedido = async (req, res) => {
         }
     };
 
-    // const getPedidoByUser = async (req, res) => {
-    //     try {
-    //         const {id_user} = req.query;
-    //         const {rol} = req.query;
-    //         const {id_restaurant} = req.query;
-    //         if (id_user != undefined) {
+    const getPedidoByUser = async (req, res) => {
+        try {   //terminar este endpoint que no lo entiendo del todo
+            const {id_user} = req.query;
+            const {rol} = req.query;
+            const {id_restaurant} = req.query;
+            if (id_user != undefined) {
 
-    //              //let user = (await User.findById(id_user));
-    //              rol === "user" ? (await User.find({iduser: id_user , rol: rol})) (await Pedido.find({iduser: u}))
+             //    let user = (await User.find({iduser: id_user , rol: rol}));
+               //      rol === "user" ?  (await Pedido.find({iduser: u}))
+            } 
+                    
                 
+            }catch (error) {
+
+        }
+    };
+
+    const deletePedido = async (req, res) => {
+        try {
+            const { id_pedido } = req.query;
+            if (id_pedido != undefined) {
+                const pedido = await Pedido.findByIdAndDelete(id_pedido);
+                if (pedido === null) {
+                    res.status(400).json({ msg: "No existe el pedido" });
+                }
+                return res.status(200).json({ msg: "Pedido eliminado" });
+            }
+            res.status(200).json({ msg: "No envio un parametro de busqueda válido" });
+        } catch (error) {
+            res.status(500).json({ msg: "Error en el servidor" });
+        }
+    };
+
 
 
     module.exports = {
         createPedido,
         getPedidoById,
+        deletePedido,
     };
