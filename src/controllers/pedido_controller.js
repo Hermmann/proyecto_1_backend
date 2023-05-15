@@ -102,6 +102,15 @@ const getPedidos = async (req, res) => {
     }
 };
 
+const getPedidoSinAceptar = async (req, res) => {
+    try {
+        const pedidos_sin_aceptar = await Pedido.find({ estado: false });
+        res.json(pedidos_sin_aceptar);
+    } catch (error) {
+        res.status(500).json({ msg: "Error en el servidor" });
+    }
+};
+
 const deletePedido = async (req, res) => {
     try {
         const { id_pedido } = req.query;
@@ -124,5 +133,6 @@ module.exports = {
     createPedido,
     getPedidoById,
     getPedidos,
+    getPedidoSinAceptar,
     deletePedido,
 };
