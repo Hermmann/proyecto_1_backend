@@ -31,7 +31,15 @@ app.use(routerPedido)
 // Conexión a MongoDB usando mongoose
 mongoose
   .connect(
-     process.env.MONGODB_URI 
+    'mongodb+srv://' +
+    process.env.MONGO_USER +
+    ':' +
+    process.env.MONGO_PASS +
+    '@cluster0.uawvyf5.mongodb.net/test',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
  
   )
   .then(() => {
